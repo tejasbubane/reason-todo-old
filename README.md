@@ -1,5 +1,10 @@
 # reason-todo
 
+My first attempt at reason-react! :tada:
+
+Based on [this tutorial](https://jaredforsyth.com/2017/07/05/a-reason-react-tutorial/)
+with small additions of my own.
+
 Run this project:
 
 ```
