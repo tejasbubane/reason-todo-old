@@ -1,0 +1,26 @@
+{
+  "name": "reason-todo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "reason-react": "0.2.4"
+  },
+  "devDependencies": {
+    "bs-platform": "2.0.0",
+    "webpack": "^3.8.1"
+  }
+}
