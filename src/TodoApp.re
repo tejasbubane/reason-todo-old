@@ -3,16 +3,16 @@ let txt = ReasonReact.stringToElement;
 type state = {items: list(TodoItem.item)};
 
 type action =
-  | AddItem
+  | AddItem(string)
   | ToggleItem(int);
 
 let component = ReasonReact.reducerComponent("TodoApp");
 
 let lastId = ref(0);
 
-let newItem = () : TodoItem.item => {
+let newItem = (title) : TodoItem.item => {
   lastId := lastId^ + 1;
-  {id: lastId^, title: "Add item from user", completed: false}
+  {id: lastId^, title, completed: false}
 };
 
 let renderList = (items, reduce) =>
@@ -29,7 +29,7 @@ let make = (_children) => {
   initialState: () => {items: [{id: 0, title: "Need to learn reasonml", completed: false}]},
   reducer: (action, {items}) =>
     switch action {
-    | AddItem => ReasonReact.Update({items: [newItem(), ...items]})
+    | AddItem(title) => ReasonReact.Update({items: [newItem(title), ...items]})
     | ToggleItem(id) =>
       let newItems =
         List.map(
@@ -45,7 +45,7 @@ let make = (_children) => {
     <div className="app">
       <div className="title">
         (txt("What to do?"))
-        <button onClick=(reduce((_) => AddItem))> (txt("Add Item")) </button>
+        <Input onSubmit=(reduce((title) => AddItem(title))) />
       </div>
       <div className="items"> (renderList(items, reduce)) </div>
       <div className="footer">
