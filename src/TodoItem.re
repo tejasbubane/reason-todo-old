@@ -8,11 +8,15 @@ type item = {
 
 let component = ReasonReact.statelessComponent("TodoItem");
 
-let make = (~item: item, _children) => {
+let make = (~item, ~onToggle, _children) => {
   ...component,
   render: (_self) =>
     <div className="item">
-      <input _type="checkbox" checked=(Js.Boolean.to_js_boolean(item.completed)) />
+      <input
+        _type="checkbox"
+        checked=(Js.Boolean.to_js_boolean(item.completed))
+        onClick=((_e) => onToggle(item.id))
+      />
       (txt(item.title))
     </div>
 };
